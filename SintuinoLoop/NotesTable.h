@@ -30,7 +30,7 @@ int C1PenM[] = { C1, D1, E1, G1, A1 };
 int C1min[] = { C1, D1, DS1, F2, G2, GS2, AS2 };
 int C1minA[] = { C1, D1, DS1, F2, G2, GS2, A2 };
 int C1Penm[] = { C1, DS1, F2, G2, AS2 };
-//scale blues
+int CPenB[] = { C1, DS1, F2,
 
 // C# Major
 
@@ -46,7 +46,7 @@ int DS1Maj[] = { DS1, F1, G1, GS1, AS1, C2, D2, DS2 };
 
 // E Major
 
-int E1Major[] = { E1, FS1, GS1, A1, B1, CS2, DS2, E };
+int E1Major[] = { E1, FS1, GS1, A1, B1, CS2, DS2 };
 
 // F Major 
 
@@ -70,8 +70,8 @@ int AMajor[] = { A1, B1, CS2, D2, E2, FS2, GS2 };
 
 //A# Major
 
-int ASMajor = { AS1, C2, D2, DS2, F2, G2, A2 };
+int ASMajor[] = { AS1, C2, D2, DS2, F2, G2, A2 };
 
 //B Major
 
-int BMajor = { B1, CS2, DS2, E2, FS2, GS2, AS2 };
+int BMajor[] = { B1, CS2, DS2, E2, FS2, GS2, AS2 };
