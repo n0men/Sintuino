@@ -1,4 +1,0 @@
-#define TRIGGER_PIN_SHIFT 
-#define ECHO_PIN_SHIFT
-#define ECHO_PIN_PITCH
-#define ECHO_PIN_PITCH
