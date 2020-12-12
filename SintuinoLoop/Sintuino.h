@@ -1,3 +1,4 @@
+/*
 #define TRIGGER_PIN_SHIFT 9
 #define ECHO_PIN_SHIFT 10
 #define TRIGGER_PIN_PITCH 11
@@ -8,3 +9,4 @@
 #define TREMOLO_PIN A2
 #define SHIFT_PIN A3
 #define WAVE_PIN 9
+*/
