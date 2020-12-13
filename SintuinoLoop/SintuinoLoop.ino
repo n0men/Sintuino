@@ -25,10 +25,11 @@
 int max_volume;
 int volume;
 NewPing pitch(TRIGGER_PIN_PITCH,ECHO_PIN_PITCH,MAX_DISTANCE);
-NewPing shift(TRIGGER_PIN_SHIFT,ECHO_PIN_SHIFT,MAX_DISTANCE);
+NewPing shift(TRIGGER_PIN_SHIFT,ECHO_PIN_SHIFT,20);
+int shift_amount;
 int octave;
-int distance;
-int tremolo_rate;
+int note;
+long int tremolo_rate;
 bool tremolo_desc;
 bool tremolo;
 
@@ -45,22 +46,17 @@ void setup() {
 }
 
 void loop() {
-  distance = pitch.ping_cm(); //calcola nota
+  note = (pitch.ping_cm()+4)/5; //calcola nota
   //Serial.println(distance);
   //se la nota è suonabile
-  if(distance) {
-
-    
+  if(note) {
     max_volume = analogRead(VOLUME_PIN); //legge volume massimo
-
-
-    
-    octave = analogRead(OCTAVE_PIN); //legge l'ottava
+    octave = analogRead(OCTAVE_PIN)/204; //legge l'ottava
  
     //se il tremolo è attivo
     tremolo = digitalRead(TREMOLO_PIN); //leggi se è attivo
     if(tremolo) {
-       tremolo_rate = analogRead(T_RATE_PIN); //legge tremolo rate
+       tremolo_rate = analogRead(T_RATE_PIN)/10+10; //legge tremolo rate
  
       // se il tremolo è in fase di discesa
       /*if(tremolo_desc) {
@@ -80,19 +76,27 @@ void loop() {
         tremolo_desc = true;
       }*/
       //ogni quanto deve agire il tremolo
-      delayMicroseconds(tremolo_rate*20+1000);
+      delay(tremolo_rate);
       vol.noTone();
-      delayMicroseconds(tremolo_rate*20+1000);
+      delay(tremolo_rate);
       Serial.println("si");
     }
     // tremolo disattivato
     else  {
       volume = max_volume;
     }
-    Serial.println(max_volume);
-    Serial.println(tremolo_rate);
+    
+    //Serial.println(tremolo_rate);
+    //Serial.println(max_volume);
 
-    vol.tone(WAVE_PIN,notes[octave/204][distance/5],max_volume); //suona la nota
+    shift_amount = shift.ping_cm
+    );
+    if(shift_amount) {
+      shift_amount = octave*(4 - shift_amount/2);
+    }
+    Serial.println(shift_amount);
+
+    vol.tone(WAVE_PIN,notes[octave][note] + shift_amount,max_volume); //suona la nota
   }
   else {
     
