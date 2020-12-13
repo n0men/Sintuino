@@ -20,7 +20,7 @@
 #define TREMOLO_PIN 2
 #define WAVE_PIN 9
 
-; //idk, without it won't compile
+ //idk, without it won't compile
 // variabili globali
 int max_volume;
 int volume;
@@ -89,8 +89,7 @@ void loop() {
     //Serial.println(tremolo_rate);
     //Serial.println(max_volume);
 
-    shift_amount = shift.ping_cm
-    );
+    shift_amount = shift.ping_cm();
     if(shift_amount) {
       shift_amount = octave*(4 - shift_amount/2);
     }

@@ -92,7 +92,7 @@ extern int notes[7][12] = {
   { nC5, nCS5, nD5, nDS5, nE5, nF5, nFS5, nG5, nGS5, nA5, nAS5, nB5 },
   { nC6, nCS6, nD6, nDS6, nE6, nF6, nFS6, nG6, nGS6, nA6, nAS6, nB6 },
   { nC7, nCS7, nD7, nDS7, nE7, nF7, nFS7, nG7, nGS7, nA7, nAS7, nB7 }
-}
+};
 
 /*
 // C Major
