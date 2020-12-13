@@ -20,7 +20,6 @@
 #define TREMOLO_PIN 2
 #define WAVE_PIN 9
 
- //idk, without it won't compile
 // variabili globali
 int max_volume;
 int volume;
