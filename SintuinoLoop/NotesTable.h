@@ -84,7 +84,7 @@
 #define nB7  3951
 
 
-extern int notes[7][12] = { 
+int notes[7][12] = { 
   { nC1, nCS1, nD1, nDS1, nE1, nF1, nFS1, nG1, nGS1, nA1, nAS1, nB1 }, 
   { nC2, nCS2, nD2, nDS2, nE2, nF2, nFS2, nG2, nGS2, nA2, nAS2, nB2 },
   { nC3, nCS3, nD3, nDS3, nE3, nF3, nFS3, nG3, nGS3, nA3, nAS3, nB3 },
