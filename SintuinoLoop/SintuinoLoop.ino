@@ -38,8 +38,7 @@ void setup() {
 }
 
 void loop() {
-  int note = (pitch.ping_cm()+4)/5; //calcola nota
-
+  note = (pitch.ping_cm()+4)/5; //calcola nota
   
   if(note) {
     volume = analogRead(VOLUME_PIN); //legge volume
@@ -65,7 +64,7 @@ void loop() {
 
 //corpo funzioni
 void set_tremolo() {
-  tremolo -= 1;
+  tremolo = 1 - tremolo;
 }
 
 void tremolo_effect() {
@@ -79,8 +78,7 @@ void play_note() {
   int shift_amount = shift.ping_cm();
   
   if(shift_amount) {
-    octave += 1;
-    shift_amount = octave*(5 - shift_amount/4);
+    shift_amount = (octave+1)*(5 - shift_amount/4);
   }
     
   vol.tone(WAVE_PIN,notes[octave][note] + shift_amount,volume);
