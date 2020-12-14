@@ -3,10 +3,10 @@
 #include <TimerOne.h>
 #include <Volume3.h>
 #include "NotesTable.h"
-//#include "Sintuino.h"
 
 // definizioni
 #define TREMOLO_PIN 2
+#define TREMOLO_INDICATOR 4
 #define TRIGGER_PIN_SHIFT 7
 #define ECHO_PIN_SHIFT 8
 #define WAVE_PIN 9
@@ -33,6 +33,7 @@ void setup() {
   pinMode(VOLUME_PIN,INPUT);
   pinMode(OCTAVE_PIN,INPUT);
   pinMode(T_RATE_PIN,INPUT);
+  pinMode(TREMOLO_INDICATOR,OUTPUT);
   pinMode(TREMOLO_PIN,INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(TREMOLO_PIN),set_tremolo,LOW);
   
@@ -40,8 +41,8 @@ void setup() {
 
 void loop() {
   int note = (pitch.ping_cm()+4)/5; //calcola nota
+
   
-  //se la nota è suonabile
   if(note) {
     volume = analogRead(VOLUME_PIN); //legge volume
     octave = analogRead(OCTAVE_PIN)/204; //legge l'ottava
@@ -49,7 +50,11 @@ void loop() {
     play_note();
  
     if(tremolo) {
-       tremolo_effect();
+      digitalWrite(TREMOLO_INDICATOR,HIGH);
+      tremolo_effect();
+    }
+    else {
+      digitalWrite(TREMOLO_INDICATOR,LOW);
     }
     
   }
