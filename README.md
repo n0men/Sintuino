@@ -30,4 +30,4 @@ Oltre alla sintesi sonora, permette di settare l'ottava a cui sarà suonato e im
 
 # Limitazioni
 
-- l'Arduino non è in grado di riprodurre più suoni contemporaneamente 
+- il Sintuino non è in grado di riprodurre più suoni contemporaneamente 
