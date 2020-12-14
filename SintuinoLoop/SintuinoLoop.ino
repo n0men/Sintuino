@@ -19,16 +19,15 @@
 #define MAX_SHIFT_DISTANCE 20
 
 // variabili globali
-int volume;
 NewPing pitch(TRIGGER_PIN_PITCH,ECHO_PIN_PITCH,MAX_DISTANCE);
 NewPing shift(TRIGGER_PIN_SHIFT,ECHO_PIN_SHIFT,MAX_SHIFT_DISTANCE);
-int octave;
 int note;
-int tremolo;
+int octave;
+int tremolo = 0;
+int volume;
 
 
 void setup() {
-  Serial.begin(115200);
   pinMode(WAVE_PIN, OUTPUT);
   pinMode(VOLUME_PIN,INPUT);
   pinMode(OCTAVE_PIN,INPUT);
@@ -36,7 +35,6 @@ void setup() {
   pinMode(TREMOLO_INDICATOR,OUTPUT);
   pinMode(TREMOLO_PIN,INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(TREMOLO_PIN),set_tremolo,LOW);
-  
 }
 
 void loop() {
@@ -67,7 +65,7 @@ void loop() {
 
 //corpo funzioni
 void set_tremolo() {
-  tremolo = 1 - tremolo;
+  tremolo -= 1;
 }
 
 void tremolo_effect() {
@@ -81,7 +79,8 @@ void play_note() {
   int shift_amount = shift.ping_cm();
   
   if(shift_amount) {
-    shift_amount = octave*(4 - shift_amount/2);
+    octave += 1;
+    shift_amount = octave*(5 - shift_amount/4);
   }
     
   vol.tone(WAVE_PIN,notes[octave][note] + shift_amount,volume);
