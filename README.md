@@ -4,7 +4,7 @@ Autore: Diego Alberto Iozzia
 
 Descrizione:
 Il Sintuino è un sintetizzatore basato su Arduino UNO suonato attraverso il movimento della mano davanti al sensore a ultrasuoni.
-Oltre alla sintesi sonora, permette di settare l'ottava a cui sarà suonato e implementa un effetto tremolo regolabile, attivabile tramite pulsante e un pitch shifter dinamico pilotato da un secondo sensore a ultrasuoni.
+Oltre alla sintesi sonora, permette di decidere l'ottava a cui sarà suonato e implementa un effetto tremolo regolabile, attivabile tramite pulsante, e un pitch shifter dinamico pilotato da un secondo sensore a ultrasuoni.
 
 # Hardware
 
