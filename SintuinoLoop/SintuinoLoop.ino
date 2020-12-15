@@ -38,7 +38,7 @@ void setup() {
 }
 
 void loop() {
-  note = (pitch.ping_cm()+4)/5; //calcola nota
+  note = (pitch.convert_cm(pitch.ping_median())+4)/5; //calcola nota
   
   if(note) {
     volume = analogRead(VOLUME_PIN); //legge volume
