@@ -23,7 +23,7 @@ NewPing pitch(TRIGGER_PIN_PITCH,ECHO_PIN_PITCH,MAX_DISTANCE);
 NewPing shift(TRIGGER_PIN_SHIFT,ECHO_PIN_SHIFT,MAX_SHIFT_DISTANCE);
 int note;
 int octave;
-int tremolo = 0;
+bool tremolo = false;
 int volume;
 
 
@@ -34,7 +34,7 @@ void setup() {
   pinMode(T_RATE_PIN,INPUT);
   pinMode(TREMOLO_INDICATOR,OUTPUT);
   pinMode(TREMOLO_PIN,INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(TREMOLO_PIN),set_tremolo,LOW);
+  attachInterrupt(digitalPinToInterrupt(TREMOLO_PIN),set_tremolo,FALLING);
 }
 
 void loop() {
@@ -47,14 +47,10 @@ void loop() {
     play_note();
  
     if(tremolo) {
-      digitalWrite(TREMOLO_INDICATOR,HIGH);
       tremolo_effect();
-    }
-    else {
-      digitalWrite(TREMOLO_INDICATOR,LOW);
+      }
     }
     
-  }
   else {
     vol.noTone(); //fa smettere di suonare la nota
   }
@@ -65,6 +61,12 @@ void loop() {
 //corpo funzioni
 void set_tremolo() {
   tremolo = 1 - tremolo;
+  if(tremolo) {
+    digitalWrite(TREMOLO_INDICATOR,HIGH);
+  }
+  else {
+    digitalWrite(TREMOLO_INDICATOR,LOW);
+  }
 }
 
 void tremolo_effect() {
